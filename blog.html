@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anubha Kabra – Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo"><a href="index.html">Anubha Kabra</a></div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="cv.html">CV</a>
+        <a href="checklist-2025.html">2025 Checklist</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1>Blog</h1>
+      <p class="section-intro">
+        Notes on AI, NLP, generative models, and things I’m learning along the way.
+      </p>
+
+      <section class="post-list">
+
+        <!-- EXAMPLE: external blog post -->
+        <article class="post-item">
+          <h2>
+            <a href="https://YOUR-EXTERNAL-BLOG-LINK" target="_blank">
+              Example blog post title
+            </a>
+          </h2>
+          <p class="post-meta">Jan 10, 2025 · Topic</p>
+          <p>
+            Short 1–2 sentence description of what this post is about. Replace this with your own
+            posts or remove if you don't need it.
+          </p>
+        </article>
+
+        <!-- EXAMPLE: internal post (you can add later) -->
+        <!--
+        <article class="post-item">
+          <h2>
+            <a href="posts/llm-eval-lessons.html">
+              What I learned from evaluating LLMs in production
+            </a>
+          </h2>
+          <p class="post-meta">Dec 5, 2024 · LLMs · Evaluation</p>
+          <p>
+            Teaser text for an internal blog post. Create the file under posts/ and link to it.
+          </p>
+        </article>
+        -->
+
+        <!-- Add more <article> blocks as you write more -->
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Anubha Kabra.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

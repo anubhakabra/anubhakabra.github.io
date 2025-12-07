@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anubha Kabra – 2025 Checklist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo"><a href="index.html">Anubha Kabra</a></div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="cv.html">CV</a>
+        <a href="checklist-2025.html">2025 Checklist</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1>2025 Checklist</h1>
+      <p class="section-intro">
+        Things I’d like to learn, build, and experience in 2025. The checklist is saved locally in
+        your browser.
+      </p>
+
+      <ul class="checklist" id="checklist">
+        <li>
+          <input type="checkbox" id="item-1" />
+          <label for="item-1" class="checklist-label">
+            Ship at least one end-to-end GenAI product feature.
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="item-2" />
+          <label for="item-2" class="checklist-label">
+            Write 6+ technical or reflective blog posts.
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="item-3" />
+          <label for="item-3" class="checklist-label">
+            Give a talk or workshop on NLP / LLM evaluation.
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="item-4" />
+          <label for="item-4" class="checklist-label">
+            Read and summarize 12 research papers I really care about.
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="item-5" />
+          <label for="item-5" class="checklist-label">
+            Start or contribute to a small open-source project.
+          </label>
+        </li>
+        <!-- Add or edit items as you like -->
+      </ul>
+
+      <button id="resetChecklist" class="btn ghost">
+        Reset checklist
+      </button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Anubha Kabra.</p>
+    </div>
+  </footer>
+
+  <script>
+    const checklistId = "anubha-2025-checklist";
+    const list = document.getElementById("checklist");
+    const resetBtn = document.getElementById("resetChecklist");
+
+    // Load saved state
+    const saved = JSON.parse(localStorage.getItem(checklistId) || "{}");
+
+    for (const [id, checked] of Object.entries(saved)) {
+      const el = document.getElementById(id);
+      if (el && el.type === "checkbox") {
+        el.checked = checked;
+        toggleLabel(el);
+      }
+    }
+
+    // Save on change
+    list.addEventListener("change", (e) => {
+      if (e.target.type === "checkbox") {
+        saved[e.target.id] = e.target.checked;
+        localStorage.setItem(checklistId, JSON.stringify(saved));
+        toggleLabel(e.target);
+      }
+    });
+
+    function toggleLabel(checkbox) {
+      const label = list.querySelector(`label[for="${checkbox.id}"]`);
+      if (label) {
+        label.classList.toggle("done", checkbox.checked);
+      }
+    }
+
+    // Reset button
+    resetBtn.addEventListener("click", () => {
+      Object.keys(saved).forEach((k) => delete saved[k]);
+      localStorage.removeItem(checklistId);
+      list.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+        cb.checked = false;
+        toggleLabel(cb);
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
